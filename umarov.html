@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Санчиш</title>
+    <style>
+     
+ body {
+    font-family: "Barlow", sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(to left, rgb(212, 248, 248), rgb(203, 248, 250));
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+   
+}
+.cards .card {
+    height: 440px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 20px 30px -10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    min-width: 260px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s ease;
+    margin: 0 10px;
+}
+.cards .card:before {
+    height: 190px;
+    width: calc(100% + 100px);
+    content: "";
+    position: absolute;
+    background-image: linear-gradient(to top, #000000 0%, rgb(0, 247, 247) 100%);
+    border-radius: 4px 4px 100% 100%;
+    transition: all 0.4s ease-out;
+    top: 0;
+}
+.cards .card .close {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    background-image: url("https://rafaelalucas91.github.io/assets/icons/misc/cross.svg");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 5px;
+    transition: all 0.2s ease;
+}
+.cards .card .close:hover {
+    background-size: 100%;
+    opacity: 0.8;
+}
+.cards .card .arrow {
+    display: none;
+}
+.cards .card article {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.cards .card article h2 {
+    color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 40px 20px 10px 20px;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+.cards .card article .title {
+    color: white;
+    padding: 10px 20px;
+    letter-spacing: 0.8px;
+    transition: all 0.4s ease;
+}
+.cards .card article .desc {
+    padding: 10px 30px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 24px;
+    color: #666;
+    height: 90px;
+    transition: all 0.4s ease-out;
+}
+.cards .card article .pic {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin: 20px 0;
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.3);
+    transition: all 0.6s ease;
+}
+.cards .card article .pic img {
+    width: 100%;
+     
+}
+ 
+.cards .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.3);
+}
+.cards .card:hover:before {
+    height: 100%;
+    border-radius: 4px;
+}
+.cards .card:hover .desc {
+    color: white;
+}
+.cards .card:hover .pic {
+    box-shadow: 0px 0px 0px 8px rgba(255, 255, 255, 0.3);
+}
+.cards .card:hover .pic img {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}
+.cards .card.closed {
+    min-width: 120px;
+    max-width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s ease;
+    cursor: pointer;
+}
+.cards .card.closed .title, .cards .card.closed .desc, .cards .card.closed .actions, .cards .card.closed .close {
+    display: none;
+}
+.cards .card.closed h2 {
+    padding: 0;
+    height: 100%;
+    transform: rotate(-90deg);
+    width: 440px;
+    z-index: 2;
+    transition: all 0.6s ease;
+}
+.cards .card.closed .pic {
+    border-radius: 100%;
+    height: 400px;
+    width: 400px;
+    position: absolute;
+    top: -20px;
+    margin: 0;
+    box-shadow: 0;
+    transition: all 0.6s ease;
+}
+.cards .card.closed .pic img {
+    object-fit: cover;
+    height: 100%;
+    transform: translateY(20px);
+}
+.cards .card.closed .pic:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+    transition: all 0.4s ease;
+    transform: translateY(20px);
+}
+.cards .card.closed:before {
+    height: 100%;
+    border-radius: 4px;
+}
+.cards .card.closed .arrow {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    bottom: 15px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    background-image: url(..//Desktop/expand.svg);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.2s ease;
+}
+.cards .card.closed:hover .arrow {
+    background-size: 100%;
+    opacity: 0.6;
+}
+
+    
+
+
+    </style>
+</head>
+<body>
+
+
+
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>SaFarBek</h2>
+            <div class="title">Safar Umarov</div>
+                <div class="pic">
+                    <img src="img/img3.jpg" alt="">
+                </div>
+                <div class="desc">I am SafarBek from Tajikistan I study in Russia My favorite languages are Russia, English, Persin </div>
+               <a class="lin" href="https://ok.ru/profile/562687791426"><img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a> 
+            </article>
+        </div>
+    </div>
+
+    
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>Довуд</h2>
+            <div class="title">Довуд Умаров</div>
+                <div class="pic">
+                    <img src="img/imag10.jpg" alt="">
+                </div>
+                <div class="desc">Умаров Довуд аз Нохияи Вахш дар расия дар
+                     кор мебошам барои таммос ба тукмаи ок зер кунед!</div>
+              <a href="https://ok.ru/profile/550248539635">  <img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a>  </article>
+        </div>
+    </div>
+
+    
+
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>Шоди</h2>
+            <div class="title">Шоди Умаров</div>
+                <div class="pic">
+                    <img src="img/imag4.jpg" alt="">
+                </div>
+                <div class="desc">Умаров Шоди аз Нохияи Вахш дар расия дар
+                     кор мебошам барои таммос ба тукмаи ок зер кунед!</div>
+              <a href="https://ok.ru/profile/569819344221">  <img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a>  </article>
+        </div>
+    </div>
+
+
+
+
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>Хусрав</h2>
+            <div class="title">Хусрав Умаров</div>
+                <div class="pic">
+                    <img src="img/imag7.jpg" alt="">
+                </div>
+                <div class="desc">Умаров Хусрав аз Шахри Душанбе дар расия дар
+                     кор мебошам барои таммос ба тукмаи ок зер кунед!</div>
+              <a href="https://ok.ru/profile/578860066833">  <img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a>  </article>
+        </div>
+    </div>
+
+    
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>Искандар</h2>
+            <div class="title">Искандар Умаров</div>
+                <div class="pic">
+                    <img src="img/imag2.jpg" alt="">
+                </div>
+                <div class="desc">Искандар Умаров аз Н.Вахш дар  нохяам дар
+                     кор мебошам барои таммос ба тукмаи ок зер кунед!</div>
+              <a href="https://ok.ru/profile/529437265882">  <img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a>  </article>
+        </div>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>Шариф</h2>
+            <div class="title">Шариф Умаров</div>
+                <div class="pic">
+                    <img src="img/imag3.jpg" alt="">
+                </div>
+                <div class="desc">Умаров Шариф аз Нохияи Вахш дар расия дар
+                    кор мебошам барои таммос ба тукмаи ок зер кунед!</div>
+              <a href="https://ok.ru/profile/562247667288">  <img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a>  </article>
+        </div>
+    </div>
+
+    
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>Рачаб </h2>
+            <div class="title">Рачаб Умаров</div>
+                <div class="pic">
+                    <img src="img/imag1.jpg" alt="">
+                </div>
+                <div class="desc">Рачаб Умаров аз Нохияи вахш дар  нохяам дар
+                    кор мебошам барои таммос ба тукмаи ок зер кунед!</div>
+              <a href="https://ok.ru/profile/547555726092">  <img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a>  </article>
+        </div>
+    </div>
+
+
+  
+    <div class="cards">
+        <div class="card">
+            <span class="close"></span>
+            <span class="arrow"></span>
+
+            <article>
+                <h2>Бахтиёр</h2>
+            <div class="title">Баха Умаров</div>
+                <div class="pic">
+                    <img src="img/imag5.jpg" alt="">
+                </div>
+                <div class="desc">Умаров Бахтиёр аз Нохияи Вахш дар расия дар
+                    кор мебошам барои таммос ба тукмаи ок зер кунед!</div>
+              <a href="https://ok.ru/profile/578876101093">  <img style="width: 50px; margin-top: -20px; border-radius: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgNoG9vqStyP4zIHU2S_j37Xxy9TVzEGhhycG9COBu22Nevy71" alt=""></a>  </article>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
