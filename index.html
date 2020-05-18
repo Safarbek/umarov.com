@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <header>
+        <div id="log"><h4>Safar</h4></div>
+       
+        <nav>
+            <ul draggable="true">
+                <li>Home</li>
+                <li>Resours</li>
+                <li>About us</li>
+                <li>Contact</li>
+            </ul>
+            <div id="menu"></div>
+        </nav>
+        
+    </header>
+   
+    <div id="slide">
+    <div id="navigete">
+        <button onclick="navigate(0)" id="back"><</button>
+        <button disabled id="all"><span id="whichSlide"></span> / <span id="howmanySlide"></span></button>
+        <button onclick="navigate(1)" id="next">></button>
+        <div id="select">
+            <label for="">See as Next and Back</label>
+            <input type="radio" value="11" name="nextBack" onclick="check(this)"  checked id="nextBack">
+            <br>
+            <label for="">See All slide in one click</label>
+            <input type="radio" value='11' name="nextBack" onclick="check(this)" id="allSlide">
+        </div> 
+    </div>
+
+
+    <div id="demo">
+<!-- SECTION 1 -->
+    <section  id="section1" class='section'>
+        <h1>I am 1 Section</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, quam inventore! Voluptates quia sequi eligendi necessitatibus ipsam maiores, reiciendis excepturi autem officiis ad dolorum ab quod quidem minus aspernatur expedita?</p>
+    </section>
+
+
+<!-- SECTION 2 -->
+    <section id="section2" class='section'>
+        
+        <h1>I am 2 Section</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, quam inventore! Voluptates quia sequi eligendi necessitatibus ipsam maiores, reiciendis excepturi autem officiis ad dolorum ab quod quidem minus aspernatur expedita?</p>
+    </section>
+
+    
+<!-- SECTION 3 -->
+    <section id="section3" class='section'>
+        <h1>I am 3 Section</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, quam inventore! Voluptates quia sequi eligendi necessitatibus ipsam maiores, reiciendis excepturi autem officiis ad dolorum ab quod quidem minus aspernatur expedita?</p>
+    </section>
+
+
+<!-- SECTION 4 -->
+    <section id="section4" class='section'>
+
+        <h1>I am 4 Section</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, quam inventore! Voluptates quia sequi eligendi necessitatibus ipsam maiores, reiciendis excepturi autem officiis ad dolorum ab quod quidem minus aspernatur expedita?</p>
+    </section>
+
+    <section id="section5" class='section'>
+
+        <h1>I am 5 Section</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, quam inventore! Voluptates quia sequi eligendi necessitatibus ipsam maiores, reiciendis excepturi autem officiis ad dolorum ab quod quidem minus aspernatur expedita?</p>
+    </section>
+
+    <section id="section6" class='section'>
+
+        <h1>I am 6 Section</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, quam inventore! Voluptates quia sequi eligendi necessitatibus ipsam maiores, reiciendis excepturi autem officiis ad dolorum ab quod quidem minus aspernatur expedita?</p>
+    </section>
+
+</div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
+
